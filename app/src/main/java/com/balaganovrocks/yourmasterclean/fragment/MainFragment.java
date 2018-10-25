@@ -20,7 +20,7 @@ import com.balaganovrocks.yourmasterclean.ui.MainActivity;
 import com.balaganovrocks.yourmasterclean.ui.MemoryCleanActivity;
 import com.balaganovrocks.yourmasterclean.ui.RubbishCleanActivity;
 import com.balaganovrocks.yourmasterclean.ui.SoftwareManageActivity;
-import com.umeng.update.UmengUpdateAgent;
+//import com.umeng.update.UmengUpdateAgent;
 import com.balaganovrocks.yourmasterclean.R;
 import com.balaganovrocks.yourmasterclean.base.BaseFragment;
 import com.balaganovrocks.yourmasterclean.model.SDCardInfo;
@@ -121,7 +121,7 @@ public class MainFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
-        UmengUpdateAgent.update(getActivity());
+        //UmengUpdateAgent.update(getActivity());
     }
 
     private void fillData() {

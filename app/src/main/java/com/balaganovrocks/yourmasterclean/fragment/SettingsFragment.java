@@ -14,9 +14,7 @@ import com.umeng.socialize.bean.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
-import com.umeng.update.UmengUpdateAgent;
-import com.umeng.update.UmengUpdateListener;
-import com.umeng.update.UpdateResponse;
+
 import com.balaganovrocks.yourmasterclean.R;
 import com.balaganovrocks.yourmasterclean.base.FragmentContainerActivity;
 import com.balaganovrocks.yourmasterclean.ui.AboutActivity;
