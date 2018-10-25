@@ -3,7 +3,6 @@ package com.balaganovrocks.yourmasterclean.base;
 import android.app.Activity;
 import android.content.Context;
 
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,7 +42,6 @@ public class ActivityTack {
 	 */
 	public  void exit(Context context){
 
-        MobclickAgent.onKillProcess(context);
 		while (activityList.size()>0) {
 			activityList.get(activityList.size()-1).finish();
 		}

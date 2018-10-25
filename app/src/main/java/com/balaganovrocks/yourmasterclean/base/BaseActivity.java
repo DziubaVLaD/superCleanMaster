@@ -10,8 +10,7 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.umeng.analytics.MobclickAgent;
+;
 import com.balaganovrocks.yourmasterclean.dialogs.ProgressDialogFragment;
 import com.balaganovrocks.yourmasterclean.utils.T;
 
@@ -141,12 +140,9 @@ public abstract class BaseActivity extends FragmentActivity {
 
     public void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
     }
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
-    public abstract void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error);
 }

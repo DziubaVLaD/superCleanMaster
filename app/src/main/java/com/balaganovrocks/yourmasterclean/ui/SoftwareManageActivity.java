@@ -73,10 +73,6 @@ public class SoftwareManageActivity extends BaseSwipeBackActivity {
 
     }
 
-    @Override
-    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-
-    }
 
 
     private void setTabsValue() {
