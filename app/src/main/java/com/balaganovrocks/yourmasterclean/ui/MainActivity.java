@@ -2,9 +2,12 @@ package com.balaganovrocks.yourmasterclean.ui;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 import com.balaganovrocks.yourmasterclean.base.BaseActivity;
@@ -80,6 +85,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerFragme
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         MyApp myApp = new MyApp();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
     }
 
 
@@ -122,7 +129,43 @@ public class MainActivity extends BaseActivity implements NavigationDrawerFragme
 //        return true;
 //    }
 
+    @Override
+    public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String message = "SSL Certificate error.";
+        switch (error.getPrimaryError()) {
+            case SslError.SSL_UNTRUSTED:
+                message = "The certificate authority is not trusted.";
+                break;
+            case SslError.SSL_EXPIRED:
+                message = "The certificate has expired.";
+                break;
+            case SslError.SSL_IDMISMATCH:
+                message = "The certificate Hostname mismatch.";
+                break;
+            case SslError.SSL_NOTYETVALID:
+                message = "The certificate is not yet valid.";
+                break;
+        }
+        message += " Do you want to continue anyway?";
 
+        builder.setTitle("SSL Certificate Error");
+        builder.setMessage(message);
+        builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                handler.proceed();
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                handler.cancel();
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

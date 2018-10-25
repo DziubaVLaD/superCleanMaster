@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,8 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
 
 import com.balaganovrocks.yourmasterclean.R;
 import com.balaganovrocks.yourmasterclean.base.BaseSwipeBackActivity;
@@ -67,6 +70,11 @@ public class SoftwareManageActivity extends BaseSwipeBackActivity {
         tabs.setViewPager(pager);
         setTabsValue();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+    }
+
+    @Override
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
 
     }
 

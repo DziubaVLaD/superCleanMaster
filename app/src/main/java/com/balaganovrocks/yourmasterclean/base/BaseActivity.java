@@ -2,9 +2,12 @@ package com.balaganovrocks.yourmasterclean.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -145,4 +148,5 @@ public abstract class BaseActivity extends FragmentActivity {
         MobclickAgent.onPause(this);
     }
 
+    public abstract void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error);
 }

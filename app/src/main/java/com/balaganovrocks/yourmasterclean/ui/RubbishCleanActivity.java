@@ -3,8 +3,10 @@ package com.balaganovrocks.yourmasterclean.ui;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
@@ -13,6 +15,7 @@ import android.content.pm.IPackageDataObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -30,6 +33,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -167,6 +172,44 @@ public class RubbishCleanActivity extends BaseSwipeBackActivity implements OnDis
         mInterstitialAd.setAdUnitId("ca-app-pub-4369038195513432/2986510514");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String message = "SSL Certificate error.";
+        switch (error.getPrimaryError()) {
+            case SslError.SSL_UNTRUSTED:
+                message = "The certificate authority is not trusted.";
+                break;
+            case SslError.SSL_EXPIRED:
+                message = "The certificate has expired.";
+                break;
+            case SslError.SSL_IDMISMATCH:
+                message = "The certificate Hostname mismatch.";
+                break;
+            case SslError.SSL_NOTYETVALID:
+                message = "The certificate is not yet valid.";
+                break;
+        }
+        message += " Do you want to continue anyway?";
+
+        builder.setTitle("SSL Certificate Error");
+        builder.setMessage(message);
+        builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                handler.proceed();
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                handler.cancel();
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
