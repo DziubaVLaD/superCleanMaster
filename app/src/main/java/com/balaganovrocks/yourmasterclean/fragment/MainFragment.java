@@ -45,7 +45,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import static com.tencent.open.utils.Global.getPackageName;
+//import static com.tencent.open.utils.Global.getPackageName;
 
 
 public class MainFragment extends BaseFragment {

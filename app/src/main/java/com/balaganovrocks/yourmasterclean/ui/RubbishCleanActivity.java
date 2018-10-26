@@ -67,7 +67,7 @@ import java.util.List;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import static com.umeng.socialize.utils.BitmapUtils.cleanCache;
+//import static com.umeng.socialize.utils.BitmapUtils.cleanCache;
 import static java.util.ResourceBundle.clearCache;
 
 
@@ -352,7 +352,7 @@ public class RubbishCleanActivity extends BaseSwipeBackActivity implements OnDis
                 !mCleanerService.isCleaning() && mCleanerService.getCacheSize() > 0) {
             mAlreadyCleaned = false;
 
-            cleanCache();
+           // cleanCache();
         }
         clearALLCache();
         deleteCache(this);

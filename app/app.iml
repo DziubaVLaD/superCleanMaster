@@ -125,7 +125,6 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-v4-27.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-26.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-base-15.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\vladz\AndroidStudioProjects\superCleanMaster\app\libs\umeng-update-v2.5.0.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-lite-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\vladz\AndroidStudioProjects\superCleanMaster\app\libs\SocialSDK_QQZone_3.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-27.0.0" level="project" />
